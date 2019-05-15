@@ -66,6 +66,13 @@ describe('SubxList', () => {
       expect(subxList.length).to.equal(2);
       expect(subscription2.closed).to.equal(true);
     });
+
+    it('should handle wrong indexex', () => {
+      subxList.add(subscription);
+      subxList.unsubscribeAtIndex(1);
+      expect(subxList.length).to.equal(1);
+      expect(subscription.closed).to.equal(false);
+    });
   });
 
   describe('#unsubscribe()', () => {
