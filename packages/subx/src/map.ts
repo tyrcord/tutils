@@ -1,46 +1,78 @@
 import { SubscriptionLike } from 'rxjs';
 
 /**
- * The SubxMap object holds key-Subscription pairs
- * until the method unsubscribe is called
+ * The SubxMap object holds and manages Key-Subscription pairs
  */
 export class SubxMap {
+  public get size() {
+    return this.subscriptionMap.size;
+  }
+
   protected subscriptionMap: Map<string, SubscriptionLike> = new Map();
 
   /**
-   * Add a subscription to the tracked subscriptions with a specified key
+   * Add a Subscription to the list with a specified key
    * @param key The key of the Subscription
    * @param subscription The key of the Subscription
    * @example
    *  this.subxMap.add('key', observable.subscribe(...));
    */
   public add(key: string, subscription: SubscriptionLike) {
+    const oldSubscription = this.subscriptionMap.get(key);
+
+    if (oldSubscription) {
+      oldSubscription.unsubscribe();
+    }
+
     this.subscriptionMap.set(key, subscription);
   }
 
   /**
-   * Unsubscribe to all subscriptions or to the specified subscription by key
-   * @param [key] The key of the Subscription
+   * Return a Subscription from the list with a specified key
+   * @param key The key of the Subscription
    * @example
-   *  this.subxMap.unsubscribe();
-   *  this.subxMap.unsubscribe('key');
+   *  this.subxMap.get('key');
    */
-  public unsubscribe(key?: string) {
-    if (key) {
-      this.unsubscribeForKey(key);
-    } else {
-      for (const subscriptionKey of this.subscriptionMap.keys()) {
-        this.unsubscribeForKey(subscriptionKey);
-      }
+  public get(key: string) {
+    return this.subscriptionMap.get(key);
+  }
+
+/**
+ * Unsubscribe to a Subscription with a specified key and remove it from the list
+ * @param key The key of the Subscription
+ * @example
+ *  this.subxMap.unsubscribeForKey('key');
+ */
+  public unsubscribeForKey(key: string) {
+    const subscription = this.subscriptionMap.get(key);
+
+    if (subscription && typeof subscription.unsubscribe === 'function') {
+      subscription.unsubscribe();
+      this.subscriptionMap.delete(key);
     }
   }
 
-  private unsubscribeForKey(key: string) {
-    const subscription = this.subscriptionMap.get(key);
-    if (subscription && typeof subscription.unsubscribe === 'function') {
-      subscription.unsubscribe();
+  /**
+   * Unsubscribe to all Subscriptions and remove them from the list
+   * @example
+   *  this.subxMap.unsubscribe();
+   */
+  public unsubscribe() {
+    for (const subscriptionKey of this.subscriptionMap.keys()) {
+      this.unsubscribeForKey(subscriptionKey);
     }
+  }
 
-    this.subscriptionMap.delete(key);
+  /**
+   * Unsubscribe to all closed Subscriptions and remove them from the list
+   * @example
+   *  this.subxMap.purge();
+   */
+  public purge() {
+    for (const [key, subscription] of this.subscriptionMap.entries()) {
+      if (subscription.closed) {
+        this.unsubscribeForKey(key);
+      }
+    }
   }
 }
