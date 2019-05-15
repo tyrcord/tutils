@@ -1,10 +1,13 @@
 import { SubscriptionLike } from 'rxjs';
 
 /**
- * The SubxList object holds Subscriptions
- * until the method unsubscribe is called
+ * The SubxList object manages a subscription list
  */
 export class SubxList {
+  public get length() {
+    return this.subscriptionList.length;
+  }
+
   protected subscriptionList: SubscriptionLike[] = [];
 
   /**
