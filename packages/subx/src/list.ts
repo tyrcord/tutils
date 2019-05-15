@@ -1,7 +1,7 @@
 import { SubscriptionLike } from 'rxjs';
 
 /**
- * The SubxList object manages a subscription list
+ * The SubxList object holds and manages a list of Subscriptions
  */
 export class SubxList {
   public get length() {
@@ -11,7 +11,7 @@ export class SubxList {
   protected subscriptionList: SubscriptionLike[] = [];
 
   /**
-   * Add a subscription to the list
+   * Add a Subscription to the list
    * @example
    *  this.subxList.add(observable.subscribe(...));
    */
@@ -20,7 +20,8 @@ export class SubxList {
   }
 
   /**
-   * Return a subscription from list with an index
+   * Return a Subscription from list with a specified index
+   * @param index The index of the Subscription
    * @example
    *  this.subxList.get(0);
    */
@@ -29,9 +30,10 @@ export class SubxList {
   }
 
   /**
-   * Unsubscribe to a subscription with an index and remove it from list
+   * Unsubscribe to a Subscription with a specified index and remove it from list
+   * @param index The index of the Subscription
    * @example
-   *  this.unsubscribeAtIndex.get(0);
+   *  this.subxList.unsubscribeAtIndex(0);
    */
   public unsubscribeAtIndex(index: number) {
     const subscription = this.get(index);
@@ -43,7 +45,7 @@ export class SubxList {
   }
 
   /**
-   * Unsubscribe to all subscriptions and remove them from the list
+   * Unsubscribe to all Subscriptions and remove them from the list
    * @example
    *  this.subxList.unsubscribe();
    */
@@ -54,7 +56,7 @@ export class SubxList {
   }
 
   /**
-   * Unsubscribe to all closed subscriptions and remove them from the list
+   * Unsubscribe to all closed Subscriptions and remove them from the list
    * @example
    *  this.subxList.purge();
    */
