@@ -67,7 +67,7 @@ describe('SubxList', () => {
       expect(subscription2.closed).to.equal(true);
     });
 
-    it('should handle wrong indexex', () => {
+    it('should handle wrong indexes', () => {
       subxList.add(subscription);
       subxList.unsubscribeAtIndex(1);
       expect(subxList.length).to.equal(1);
