@@ -1,0 +1,21 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "husky": "2.3.0",
+    "lerna": "3.14.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run lint",
+      "pre-push": "lerna run test"
+    }
+  },
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "format": "lerna run format",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "coverage": "lerna run coverage"
+  }
+}
