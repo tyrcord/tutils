@@ -35,7 +35,7 @@ describe('SubxList', () => {
   });
 
   describe('#add()', () => {
-    it('should add a subscription to list', () => {
+    it('should add a subscription to the list', () => {
       subxList.add(subscription);
       expect(subxList.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
