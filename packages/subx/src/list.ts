@@ -11,7 +11,7 @@ export class SubxList {
   protected subscriptionList: SubscriptionLike[] = [];
 
   /**
-   * Add a subscription to the tracked subscriptions
+   * Add a subscription to the list
    * @example
    *  this.subxList.add(observable.subscribe(...));
    */
@@ -48,11 +48,27 @@ export class SubxList {
    *  this.subxList.unsubscribe();
    */
   public unsubscribe() {
-    for (const subscription of this.subscriptionList) {
-      if (subscription && typeof subscription.unsubscribe === 'function') {
-        subscription.unsubscribe();
+    while (this.subscriptionList.length) {
+      this.unsubscribeAtIndex(0);
+    }
+  }
+
+  /**
+   * Unsubscribe to all closed subscriptions and remove them from the list
+   * @example
+   *  this.subxList.purge();
+   */
+  public purge() {
+    let length = this.subscriptionList.length;
+
+    for (let index = 0; index < length; index++) {
+      const subscription = this.subscriptionList[index];
+
+      if (subscription.closed) {
+        this.unsubscribeAtIndex(index);
+        index--;
+        length--;
       }
     }
-    this.subscriptionList = [];
   }
 }
