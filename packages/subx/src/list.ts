@@ -27,6 +27,23 @@ export class SubxList {
   public get(index: number) {
     return this.subscriptionList[index];
   }
+
+  /**
+   * Unsubscribe to a subscription with an index and remove it from list
+   * @example
+   *  this.unsubscribeAtIndex.get(0);
+   */
+  public unsubscribeAtIndex(index: number) {
+    const subscription = this.get(index);
+
+    if (subscription && typeof subscription.unsubscribe === 'function') {
+      subscription.unsubscribe();
+      this.subscriptionList.splice(index, 1);
+    }
+  }
+
+  /**
+   * Unsubscribe to all subscriptions and remove them from the list
    * @example
    *  this.subxList.unsubscribe();
    */
