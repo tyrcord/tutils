@@ -20,7 +20,13 @@ export class SubxList {
   }
 
   /**
-   * Unsubscribe to all subscriptions
+   * Return a subscription from list with an index
+   * @example
+   *  this.subxList.get(0);
+   */
+  public get(index: number) {
+    return this.subscriptionList[index];
+  }
    * @example
    *  this.subxList.unsubscribe();
    */
