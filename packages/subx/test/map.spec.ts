@@ -26,32 +26,32 @@ describe('SubxMap', () => {
     end.complete();
   });
 
-  describe('#size', () => {
+  describe('#length', () => {
     it('should return the number of tracked subscriptions', () => {
       subxMap.add('key1', subscription);
       subxMap.add('key2', subscription2);
-      expect(subxMap.size).to.equal(2);
+      expect(subxMap.length).to.equal(2);
     });
   });
 
   describe('#add()', () => {
     it('should add a subscription to the list', () => {
       subxMap.add('key1', subscription);
-      expect(subxMap.size).to.equal(1);
+      expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
 
       subxMap.add('key2', subscription2);
-      expect(subxMap.size).to.equal(2);
+      expect(subxMap.length).to.equal(2);
       expect(subscription2.closed).to.equal(false);
     });
 
     it('should replace a subscription from the list and unsubscribe it when the key already exist', () => {
       subxMap.add('key1', subscription);
-      expect(subxMap.size).to.equal(1);
+      expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
 
       subxMap.add('key1', subscription2);
-      expect(subxMap.size).to.equal(1);
+      expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(true);
       expect(subscription2.closed).to.equal(false);
     });
@@ -71,17 +71,17 @@ describe('SubxMap', () => {
       subxMap.add('key2', subscription2);
       subxMap.add('key3', of(2).subscribe());
 
-      expect(subxMap.size).to.equal(3);
+      expect(subxMap.length).to.equal(3);
 
       subxMap.unsubscribeForKey('key2');
-      expect(subxMap.size).to.equal(2);
+      expect(subxMap.length).to.equal(2);
       expect(subscription2.closed).to.equal(true);
     });
 
     it('should handle wrong indexes', () => {
       subxMap.add('key1', subscription);
       subxMap.unsubscribeForKey('key2');
-      expect(subxMap.size).to.equal(1);
+      expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
     });
   });
@@ -92,7 +92,7 @@ describe('SubxMap', () => {
       subxMap.add('key2', subscription2);
       subxMap.add('key3', of(2).subscribe());
       subxMap.unsubscribe();
-      expect(subxMap.size).to.equal(0);
+      expect(subxMap.length).to.equal(0);
       expect(subscription.closed).to.equal(true);
       expect(subscription2.closed).to.equal(true);
     });
@@ -109,7 +109,7 @@ describe('SubxMap', () => {
       subxMap.add('key7', of(4).subscribe());
 
       subxMap.purge();
-      expect(subxMap.size).to.equal(4);
+      expect(subxMap.length).to.equal(4);
       expect(subscription.closed).to.equal(false);
       expect(subscription2.closed).to.equal(false);
     });

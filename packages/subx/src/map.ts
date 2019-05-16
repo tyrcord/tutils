@@ -4,7 +4,12 @@ import { SubscriptionLike } from 'rxjs';
  * The SubxMap object holds and manages Key-Subscription pairs
  */
 export class SubxMap {
-  public get size() {
+
+  /**
+   * Number of Subscriptions hold
+   * @type {number}
+   */
+  public get length() {
     return this.subscriptionMap.size;
   }
 
