@@ -13,9 +13,9 @@ with NPM 5.5.1 or higher.
 
 - [Installation](#installation)
 - [SubxList](#subxlist)
-    - [API](docs/subx-list.md)
+    - [API Reference](docs/subx-list.md)
 - [SubxMap](#subxmap)
-    - [API](docs/subx-map.md)
+    - [API Reference](docs/subx-map.md)
 - [License](#license)
 
 # Installation

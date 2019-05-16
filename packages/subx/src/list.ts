@@ -4,9 +4,8 @@ import { SubscriptionLike } from 'rxjs';
  * The SubxList object holds and manages a list of Subscriptions
  */
 export class SubxList {
-
   /**
-   * Number of Subscriptions hold
+   * Return the number of Subscriptions
    * @type {number}
    */
   public get length() {
@@ -17,6 +16,7 @@ export class SubxList {
 
   /**
    * Add Subscriptions to the list
+   * @param subscriptionN The subscriptions to add to the list
    * @example
    *  this.subxList.add(observable.subscribe(...));
    */
@@ -25,8 +25,10 @@ export class SubxList {
   }
 
   /**
-   * Return a Subscription from list with a specified index
+   * Return a Subscription from the list with a specified index
    * @param index The index of the Subscription
+   * @returns {RxJS.SubscriptionLike|undefined} The Subscription associated with
+   * the specified index, or undefined if using an invalid index number
    * @example
    *  this.subxList.get(0);
    */

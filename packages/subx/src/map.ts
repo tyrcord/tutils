@@ -4,9 +4,8 @@ import { SubscriptionLike } from 'rxjs';
  * The SubxMap object holds and manages Key-Subscription pairs
  */
 export class SubxMap {
-
   /**
-   * Number of Subscriptions hold
+   * Return the number of Subscriptions
    * @type {number}
    */
   public get length() {
@@ -35,8 +34,10 @@ export class SubxMap {
   /**
    * Return a Subscription from the list with a specified key
    * @param key The key of the Subscription
+   * @returns {RxJS.SubscriptionLike|undefined} The Subscription associated with
+   * the specified key, or undefined if the key can't be found in the list
    * @example
-   *  this.subxMap.get('key');
+   *  const subscription = subxMap.get('key');
    */
   public get(key: string) {
     return this.subscriptionMap.get(key);
