@@ -1,11 +1,80 @@
-# `subx`
+# SubX
 
-> TODO: description
+RxJS Subscriptions management.
 
-## Usage
+Provide Apis to store and manage RxJS subscriptions and provide methods to unsubscribe them all.
 
+## Prerequisites
+
+The project has dependencies that require Node 8.9 or higher, together
+with NPM 5.5.1 or higher.
+
+# Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+    - [SubxList](#subxlist)
+    - [SubxMap](#subxmap)
+- [API](#api)
+    - [SubxList](#subxlist)
+    - [SubxMap](#subxmap)
+- [License](#license)
+
+# Installation
+
+**BEFORE YOU INSTALL:** please read the [prerequisites](#prerequisites)
+
+```bash
+npm install @tutils/subx --save
 ```
-const subx = require('subx');
 
-// TODO: DEMONSTRATE API
+# Usage
+
+## SubxList
+
+Object that holds and manages a list of Subscriptions.
+
+```ts
+import { SubxList } from '@tutils/subx';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+const subxList = new SubxList();
+const source = new Subject();
+
+const subscription = source.subscribe();
+const subscription2 = source.subscribe();
+
+subxList.add(subscription);
+subxList.add(subscription2);
+
+subxList.unsubscribe();
 ```
+
+## SubxMap
+
+Object that holds and manages Key-Subscription pairs.
+
+```ts
+import { SubxMap } from '@tutils/subx';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+const subxList = new SubxMap();
+const source = new Subject();
+
+const subscription = source.subscribe();
+const subscription2 = source.subscribe();
+
+subxList.add('key1', subscription);
+subxList.add('key2', subscription2);
+
+...
+
+subxList.unsubscribe();
+```
+
+# License
+Copyright (c) Tyrcord, Inc. Licensed under the ISC License.
+
+See [LICENSE](LICENSE) file in the project root for details.
