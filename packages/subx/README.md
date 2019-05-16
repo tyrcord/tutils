@@ -13,9 +13,9 @@ with NPM 5.5.1 or higher.
 
 - [Installation](#installation)
 - [SubxList](#subxlist)
-    - [API](docs/subx-list)
+    - [API](docs/subx-list.md)
 - [SubxMap](#subxmap)
-    - [API](docs/subx-map)
+    - [API](docs/subx-map.md)
 - [License](#license)
 
 # Installation
@@ -51,7 +51,7 @@ subxList.add(subscription2);
 subxList.unsubscribe();
 ```
 
-[API Reference](docs/subx-list)
+[API Reference](docs/subx-list.md)
 
 # SubxMap
 
@@ -77,7 +77,7 @@ subxList.add('key2', subscription2);
 
 subxList.unsubscribe();
 ```
-[API Reference](docs/subx-map)
+[API Reference](docs/subx-map.md)
 
 # License
 Copyright (c) Tyrcord, Inc. Licensed under the ISC License.
