@@ -39,16 +39,22 @@ export class SubxList {
   /**
    * Unsubscribe to a Subscription with a specified index and remove it from list
    * @param index The index of the Subscription
+   * @returns {boolean} true if a Subscription in the list existed and has been
+   * unsubscribed and removed, or false if the Subscription does not exist.
    * @example
    *  this.subxList.unsubscribeAtIndex(0);
    */
-  public unsubscribeAtIndex(index: number) {
+  public unsubscribeAtIndex(index: number): boolean {
     const subscription = this.get(index);
 
     if (subscription && typeof subscription.unsubscribe === 'function') {
       subscription.unsubscribe();
       this.subscriptionList.splice(index, 1);
+
+      return true;
     }
+
+    return false;
   }
 
   /**

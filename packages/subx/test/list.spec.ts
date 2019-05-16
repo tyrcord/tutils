@@ -60,16 +60,18 @@ describe('SubxList', () => {
 
       expect(subxList.length).to.equal(3);
 
-      subxList.unsubscribeAtIndex(1);
+      const unsubscribed = subxList.unsubscribeAtIndex(1);
       expect(subxList.length).to.equal(2);
       expect(subscription2.closed).to.equal(true);
+      expect(unsubscribed).to.equal(true);
     });
 
     it('should handle wrong indexes', () => {
       subxList.add(subscription);
-      subxList.unsubscribeAtIndex(1);
+      const unsubscribed = subxList.unsubscribeAtIndex(1);
       expect(subxList.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
+      expect(unsubscribed).to.equal(false);
     });
   });
 
