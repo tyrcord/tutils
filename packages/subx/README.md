@@ -12,12 +12,10 @@ with NPM 5.5.1 or higher.
 # Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-    - [SubxList](#subxlist)
-    - [SubxMap](#subxmap)
-- [API](#api)
-    - [SubxList](#subxlist)
-    - [SubxMap](#subxmap)
+- [SubxList](#subxlist)
+    - [API](docs/subx-list)
+- [SubxMap](#subxmap)
+    - [API](docs/subx-map)
 - [License](#license)
 
 # Installation
@@ -28,11 +26,11 @@ with NPM 5.5.1 or higher.
 npm install @tutils/subx --save
 ```
 
-# Usage
-
-## SubxList
+# SubxList
 
 Object that holds and manages a list of Subscriptions.
+
+### Usage
 
 ```ts
 import { SubxList } from '@tutils/subx';
@@ -48,12 +46,18 @@ const subscription2 = source.subscribe();
 subxList.add(subscription);
 subxList.add(subscription2);
 
+...
+
 subxList.unsubscribe();
 ```
 
-## SubxMap
+[API Reference](docs/subx-list)
+
+# SubxMap
 
 Object that holds and manages Key-Subscription pairs.
+
+### Usage
 
 ```ts
 import { SubxMap } from '@tutils/subx';
@@ -73,6 +77,7 @@ subxList.add('key2', subscription2);
 
 subxList.unsubscribe();
 ```
+[API Reference](docs/subx-map)
 
 # License
 Copyright (c) Tyrcord, Inc. Licensed under the ISC License.
