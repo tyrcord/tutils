@@ -1,5 +1,7 @@
 # SubX
 
+![npm bundle size](https://img.shields.io/bundlephobia/min/@tutils/subx.svg)
+
 RxJS Subscriptions management.
 
 Provide Apis to store and manage RxJS subscriptions and provide methods to unsubscribe them all.
