@@ -1,9 +1,21 @@
 {
   "name": "root",
+  "author": "Tyrcord Inc. <dev@tyrcord.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyrcord/tutils.git"
+  },
+  "homepage": "https://github.com/tyrcord/tutils",
+  "bugs": "https://github.com/tyrcord/tutils/issues",
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "private": true,
   "devDependencies": {
-    "husky": "2.3.0",
-    "lerna": "3.14.1"
+    "husky": "^2.3.0",
+    "lerna": "^3.14.1",
+    "codecov": "^3.5.0"
   },
   "husky": {
     "hooks": {
@@ -16,6 +28,7 @@
     "format": "lerna run format",
     "build": "lerna run build",
     "test": "lerna run test",
-    "coverage": "lerna run coverage"
+    "coverage": "lerna run coverage",
+    "codecov": "npm run coverage && lerna run codecov && codecov"
   }
 }
