@@ -73,16 +73,18 @@ describe('SubxMap', () => {
 
       expect(subxMap.length).to.equal(3);
 
-      subxMap.unsubscribeForKey('key2');
+      const unsubscribed = subxMap.unsubscribeForKey('key2');
       expect(subxMap.length).to.equal(2);
       expect(subscription2.closed).to.equal(true);
+      expect(unsubscribed).to.equal(true);
     });
 
     it('should handle wrong indexes', () => {
       subxMap.add('key1', subscription);
-      subxMap.unsubscribeForKey('key2');
+      const unsubscribed = subxMap.unsubscribeForKey('key2');
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
+      expect(unsubscribed).to.equal(false);
     });
   });
 

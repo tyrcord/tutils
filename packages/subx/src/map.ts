@@ -43,19 +43,23 @@ export class SubxMap {
     return this.subscriptionMap.get(key);
   }
 
-/**
- * Unsubscribe to a Subscription with a specified key and remove it from the list
- * @param key The key of the Subscription
- * @example
- *  this.subxMap.unsubscribeForKey('key');
- */
-  public unsubscribeForKey(key: string) {
+  /**
+   * Unsubscribe to a Subscription with a specified key and remove it from the list
+   * @param key The key of the Subscription
+   * @returns {boolean} true if a Subscription in the list existed and has been
+   * unsubscribed and removed, or false if the Subscription does not exist
+   * @example
+   *  const unsubscribed = subxMap.unsubscribeForKey('key');
+   */
+  public unsubscribeForKey(key: string): boolean {
     const subscription = this.subscriptionMap.get(key);
 
     if (subscription && typeof subscription.unsubscribe === 'function') {
       subscription.unsubscribe();
-      this.subscriptionMap.delete(key);
+      return this.subscriptionMap.delete(key);
     }
+
+    return false;
   }
 
   /**
@@ -64,8 +68,8 @@ export class SubxMap {
    *  this.subxMap.unsubscribe();
    */
   public unsubscribe() {
-    for (const subscriptionKey of this.subscriptionMap.keys()) {
-      this.unsubscribeForKey(subscriptionKey);
+    for (const key of this.subscriptionMap.keys()) {
+      this.unsubscribeForKey(key);
     }
   }
 
