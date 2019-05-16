@@ -28,8 +28,7 @@ describe('SubxList', () => {
 
   describe('#length', () => {
     it('should return the number of tracked subscriptions', () => {
-      subxList.add(subscription);
-      subxList.add(subscription2);
+      subxList.add(subscription, subscription2);
       expect(subxList.length).to.equal(2);
     });
   });
@@ -56,8 +55,7 @@ describe('SubxList', () => {
 
   describe('#unsubscribeAtIndex()', () => {
     it('should unsubscribe to a subscription with an index', () => {
-      subxList.add(subscription);
-      subxList.add(subscription2);
+      subxList.add(subscription, subscription2);
       subxList.add(of(2).subscribe());
 
       expect(subxList.length).to.equal(3);
@@ -77,8 +75,7 @@ describe('SubxList', () => {
 
   describe('#unsubscribe()', () => {
     it('should unsubscribe to all subscriptions', () => {
-      subxList.add(subscription);
-      subxList.add(subscription2);
+      subxList.add(subscription, subscription2);
       subxList.add(of(2).subscribe());
       subxList.unsubscribe();
       expect(subxList.length).to.equal(0);
