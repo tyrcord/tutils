@@ -76,8 +76,8 @@ const source = new Subject();
 const subscription = source.subscribe();
 const subscription2 = source.subscribe();
 
-subxList.add('key1', subscription);
-subxList.add('key2', subscription2);
+subxList.set('key1', subscription);
+subxList.set('key2', subscription2);
 
 ...
 
