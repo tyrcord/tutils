@@ -9,8 +9,8 @@ Object that holds and manages a list of Subscriptions.
 - [Methods](#methods)
     - [add](#add)
     - [get](#get)
-    - [unsubscribeAtIndex](#unsubscribeAtIndex)
-    - [unsubscribe](#unsubscribe)
+    - [unsubscribeAt](#unsubscribeAt)
+    - [unsubscribeAll](#unsubscribeAll)
     - [purge](#purge)
 
 ## Accessors
@@ -69,11 +69,11 @@ The Subscription associated with the specified index, or `undefined` if using an
 const subscription = subxList.get(0);
 ```
 
-### unsubscribeAtIndex
+### unsubscribeAt
 
 Unsubscribe to a Subscription with a specified index and remove it from list.
 
-`subxList.unsubscribeAtIndex(index)`
+`subxList.unsubscribeAt(index)`
 
 #### Parameters
 
@@ -88,19 +88,19 @@ Unsubscribe to a Subscription with a specified index and remove it from list.
 #### Example
 
 ```ts
-const unsubscribed = subxList.unsubscribeAtIndex(0);
+const unsubscribed = subxList.unsubscribeAt(0);
 ```
 
 ### unsubscribe
 
 Unsubscribe to all Subscriptions and remove them from the list.
 
-`subxList.unsubscribe()`
+`subxList.unsubscribeAll()`
 
 #### Example
 
 ```ts
-subxList.unsubscribe();
+subxList.unsubscribeAll();
 ```
 
 ### purge

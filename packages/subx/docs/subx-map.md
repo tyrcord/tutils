@@ -9,8 +9,9 @@ Object that holds and manages Key-Subscription pairs.
 - [Methods](#methods)
     - [add](#add)
     - [get](#get)
-    - [unsubscribeAtIndex](#unsubscribeAtIndex)
-    - [unsubscribe](#unsubscribe)
+    - [hasSubscription](#hasSubscription)
+    - [unsubscribeForKey](#unsubscribeForKey)
+    - [unsubscribe](#unsubscribeAll)
     - [purge](#purge)
 
 ## Accessors
@@ -40,7 +41,7 @@ Add a Subscription to the list with a specified key.
 | Name    | Type      | Description  |
 |---------|-----------|--------------|
 | key	  | string	  | The key of the Subscription
-| subscription	  | RxJS.SubscriptionLike	  | The key of the Subscription
+| subscription	  | RxJS.SubscriptionLike	  | The subscription to add to the list
 
 #### Example
 
@@ -92,11 +93,11 @@ Unsubscribe to a Subscription with a specified key and remove it from the list.
 const unsubscribed = subxMap.unsubscribeForKey('key');
 ```
 
-### unsubscribe
+### unsubscribeAll
 
 Unsubscribe to all Subscriptions and remove them from the list.
 
-`subxMap.unsubscribe()`
+`subxMap.unsubscribeAll()`
 
 #### Example
 
