@@ -6,10 +6,6 @@ RxJS Subscriptions management.
 
 Provide Apis to store and manage RxJS subscriptions and provide methods to unsubscribe them all.
 
-## Changelog
-
-[Learn about the latest improvements](CHANGELOG.md)
-
 ## Prerequisites
 
 The project has dependencies that require Node 8.9 or higher, together
@@ -18,6 +14,7 @@ with NPM 5.5.1 or higher.
 # Contents
 
 - [Installation](#installation)
+- [Changelog](CHANGELOG.md)
 - [SubxList](#subxlist)
     - [API Reference](docs/subx-list.md)
 - [SubxMap](#subxmap)
