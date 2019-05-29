@@ -55,6 +55,16 @@ describe('SubxMap', () => {
       expect(subscription.closed).to.equal(true);
       expect(subscription2.closed).to.equal(false);
     });
+
+    it('should not unsubscribe a subscription when the same subscription is added with the same key', () => {
+      subxMap.add('key1', subscription);
+      expect(subxMap.length).to.equal(1);
+      expect(subscription.closed).to.equal(false);
+
+      subxMap.add('key1', subscription);
+      expect(subxMap.length).to.equal(1);
+      expect(subscription.closed).to.equal(false);
+    });
   });
 
   describe('#get()', () => {

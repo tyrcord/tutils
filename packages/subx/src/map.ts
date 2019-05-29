@@ -24,7 +24,7 @@ export class SubxMap {
   public add(key: string, subscription: SubscriptionLike) {
     const oldSubscription = this.subscriptionMap.get(key);
 
-    if (oldSubscription) {
+    if (oldSubscription && oldSubscription !== subscription) {
       oldSubscription.unsubscribe();
     }
 
