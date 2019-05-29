@@ -1,33 +1,30 @@
 import { expect } from 'chai';
 import 'mocha';
-import { interval, Observable, of, Subject, SubscriptionLike } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { of, Subject, SubscriptionLike } from 'rxjs';
 
 import { SubxMap } from '../src/map';
 
 describe('SubxMap', () => {
   let subxMap: SubxMap;
-  let source: Observable<number>;
-  let end: Subject<boolean>;
+  let source: Subject<number>;
   let subscription: SubscriptionLike;
   let subscription2: SubscriptionLike;
 
   beforeEach(() => {
     subxMap = new SubxMap();
-    end = new Subject();
-    source = interval(1000).pipe(takeUntil(end));
+    source = new Subject();
     subscription = source.subscribe();
     subscription2 = source.subscribe();
   });
 
   afterEach(() => {
     subxMap.unsubscribeAll();
-    end.next(true);
-    end.complete();
+    source.complete();
   });
 
   describe('#length', () => {
     it('should return the number of tracked subscriptions', () => {
+      expect(subxMap.length).to.equal(0);
       subxMap.add('key1', subscription);
       subxMap.add('key2', subscription2);
       expect(subxMap.length).to.equal(2);
@@ -36,13 +33,9 @@ describe('SubxMap', () => {
 
   describe('#add()', () => {
     it('should add a subscription to the list', () => {
+      expect(subxMap.length).to.equal(0);
       subxMap.add('key1', subscription);
       expect(subxMap.length).to.equal(1);
-      expect(subscription.closed).to.equal(false);
-
-      subxMap.add('key2', subscription2);
-      expect(subxMap.length).to.equal(2);
-      expect(subscription2.closed).to.equal(false);
     });
 
     it('should replace a subscription from the list and unsubscribe it when the key already exist', () => {
@@ -90,30 +83,30 @@ describe('SubxMap', () => {
     it('should unsubscribe to a subscription with an index', () => {
       subxMap.add('key1', subscription);
       subxMap.add('key2', subscription2);
-      subxMap.add('key3', of(2).subscribe());
-
-      expect(subxMap.length).to.equal(3);
-
-      const unsubscribed = subxMap.unsubscribeForKey('key2');
       expect(subxMap.length).to.equal(2);
-      expect(subscription2.closed).to.equal(true);
+
+      const unsubscribed = subxMap.unsubscribeForKey('key1');
+      expect(subxMap.length).to.equal(1);
+      expect(subscription.closed).to.equal(true);
       expect(unsubscribed).to.equal(true);
     });
 
-    it('should handle wrong indexes', () => {
+    it('should handle wrong keys', () => {
       subxMap.add('key1', subscription);
+      expect(subxMap.length).to.equal(1);
+
       const unsubscribed = subxMap.unsubscribeForKey('key2');
+
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
       expect(unsubscribed).to.equal(false);
     });
   });
 
-  describe('#unsubscribe()', () => {
+  describe('#unsubscribeAll()', () => {
     it('should unsubscribe to all subscriptions', () => {
       subxMap.add('key1', subscription);
       subxMap.add('key2', subscription2);
-      subxMap.add('key3', of(2).subscribe());
       subxMap.unsubscribeAll();
       expect(subxMap.length).to.equal(0);
       expect(subscription.closed).to.equal(true);

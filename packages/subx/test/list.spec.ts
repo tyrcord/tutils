@@ -1,33 +1,30 @@
 import { expect } from 'chai';
 import 'mocha';
-import { interval, Observable, of, Subject, SubscriptionLike } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { of, Subject, SubscriptionLike } from 'rxjs';
 
 import { SubxList } from '../src/list';
 
 describe('SubxList', () => {
   let subxList: SubxList;
-  let source: Observable<number>;
-  let end: Subject<boolean>;
+  let source: Subject<number>;
   let subscription: SubscriptionLike;
   let subscription2: SubscriptionLike;
 
   beforeEach(() => {
     subxList = new SubxList();
-    end = new Subject();
-    source = interval(1000).pipe(takeUntil(end));
+    source = new Subject();
     subscription = source.subscribe();
     subscription2 = source.subscribe();
   });
 
   afterEach(() => {
     subxList.unsubscribeAll();
-    end.next(true);
-    end.complete();
+    source.complete();
   });
 
   describe('#length', () => {
     it('should return the number of tracked subscriptions', () => {
+      expect(subxList.length).to.equal(0);
       subxList.add(subscription, subscription2);
       expect(subxList.length).to.equal(2);
     });
@@ -35,13 +32,12 @@ describe('SubxList', () => {
 
   describe('#add()', () => {
     it('should add a subscription to the list', () => {
+      expect(subxList.length).to.equal(0);
       subxList.add(subscription);
       expect(subxList.length).to.equal(1);
-      expect(subscription.closed).to.equal(false);
 
       subxList.add(subscription2);
       expect(subxList.length).to.equal(2);
-      expect(subscription2.closed).to.equal(false);
     });
   });
 
@@ -56,19 +52,20 @@ describe('SubxList', () => {
   describe('#unsubscribeAt()', () => {
     it('should unsubscribe to a subscription with an index', () => {
       subxList.add(subscription, subscription2);
-      subxList.add(of(2).subscribe());
-
-      expect(subxList.length).to.equal(3);
-
-      const unsubscribed = subxList.unsubscribeAt(1);
       expect(subxList.length).to.equal(2);
-      expect(subscription2.closed).to.equal(true);
+
+      const unsubscribed = subxList.unsubscribeAt(0);
+      expect(subxList.length).to.equal(1);
+      expect(subscription.closed).to.equal(true);
       expect(unsubscribed).to.equal(true);
     });
 
     it('should handle wrong indexes', () => {
       subxList.add(subscription);
+      expect(subxList.length).to.equal(1);
+
       const unsubscribed = subxList.unsubscribeAt(1);
+
       expect(subxList.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
       expect(unsubscribed).to.equal(false);
@@ -78,7 +75,6 @@ describe('SubxList', () => {
   describe('#unsubscribeAll()', () => {
     it('should unsubscribe to all subscriptions', () => {
       subxList.add(subscription, subscription2);
-      subxList.add(of(2).subscribe());
       subxList.unsubscribeAll();
       expect(subxList.length).to.equal(0);
       expect(subscription.closed).to.equal(true);
