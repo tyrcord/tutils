@@ -32,7 +32,7 @@ const length = subxMap.length;
 
 ### set
 
-Add a Subscription to the list with a specified key.
+Add or update a Subscription to the list with a specified key.
 Will unsubscribe a Subscription when updating a existing key.
 
 `subxMap.set(key, subscription)`

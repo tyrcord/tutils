@@ -15,7 +15,7 @@ export class SubxMap {
   protected subscriptionMap: Map<string, SubscriptionLike> = new Map();
 
   /**
-   * Add a Subscription to the list with a specified key.
+   * Add or update a Subscription to the list with a specified key.
    * Will unsubscribe a Subscription when updating a existing key.
    * @param key The key of the Subscription
    * @param subscription The Subscription to add to the list
