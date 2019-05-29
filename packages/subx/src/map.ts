@@ -17,7 +17,7 @@ export class SubxMap {
   /**
    * Add a Subscription to the list with a specified key
    * @param key The key of the Subscription
-   * @param subscription The key of the Subscription
+   * @param subscription The subscription to add to the list
    * @example
    *  this.subxMap.add('key', observable.subscribe(...));
    */
