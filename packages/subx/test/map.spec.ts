@@ -75,6 +75,17 @@ describe('SubxMap', () => {
     });
   });
 
+  describe('#hasSubscription()', () => {
+    it('should return true if this list contains the given subscription', () => {
+      subxMap.add('key1', subscription);
+      expect(subxMap.hasSubscription(subscription)).to.equal(true);
+    });
+
+    it('should return false if this list does not contain the given subscription', () => {
+      expect(subxMap.hasSubscription(subscription)).to.equal(false);
+    });
+  });
+
   describe('#unsubscribeForKey()', () => {
     it('should unsubscribe to a subscription with an index', () => {
       subxMap.add('key1', subscription);

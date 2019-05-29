@@ -71,6 +71,28 @@ The Subscription associated with the specified key, or `undefined` if the key ca
 const subscription = subxMap.get('key');
 ```
 
+### hasSubscription
+
+Returns a boolean indicating whether an subscription exists or not.
+
+`subxMap.hasSubscription(subscription)`
+
+##### Parameters
+
+| Name    | Type      | Description  |
+|---------|-----------|--------------|
+| subscription	  | RxJS.SubscriptionLike	  | The subscription to find within the list
+
+#### Returns
+
+`true` if a subscription exists in the list; otherwise `false`.
+
+##### Example
+
+```ts
+subxMap.hasSubscription(subscription);
+```
+
 ### unsubscribeForKey
 
 Unsubscribe to a Subscription with a specified key and remove it from the list.

@@ -44,6 +44,24 @@ export class SubxMap {
   }
 
   /**
+   * Returns a boolean indicating whether an subscription exists or not.
+   * @param subscription The subscription to find within the list
+   * @returns {boolean} `true` if a subscription exists in the list;
+   * otherwise `false`
+   * @example
+   *  this.subxMap.hasSubscription(subscription);
+   */
+  public hasSubscription(subscription: SubscriptionLike) {
+    for (const value of this.subscriptionMap.values()) {
+      if (value === subscription) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
    * Unsubscribe to a Subscription with a specified key and remove it from the list
    * @param key The key of the Subscription
    * @returns {boolean} true if a Subscription in the list existed and has been
