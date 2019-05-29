@@ -54,7 +54,7 @@ subxList.add(subscription2);
 
 ...
 
-subxList.unsubscribe();
+subxList.unsubscribeAll();
 ```
 
 [API Reference](docs/subx-list.md)
@@ -81,7 +81,7 @@ subxList.set('key2', subscription2);
 
 ...
 
-subxList.unsubscribe();
+subxList.unsubscribeAll();
 ```
 [API Reference](docs/subx-map.md)
 
