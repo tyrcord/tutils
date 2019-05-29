@@ -1,7 +1,8 @@
 # [0.3.0](https://github.com/tyrcord/tutils/releases/tag/v0.3.0) (2019-05-29)
 
 ### Features
-* Add the method hasSubscription to the SubxMap Object
+* **SubxMap:** Add the method `hasSubscription`
+* **SubxMap:** Set method allows chaining calls
 
 ### Bug Fixes
 * **SubxMap:** Does not unsubscribe a subscription when the same subscription is added with the same key

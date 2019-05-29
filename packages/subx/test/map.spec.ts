@@ -58,6 +58,13 @@ describe('SubxMap', () => {
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
     });
+
+    it('should allow chaining calls', () => {
+      expect(subxMap.length).to.equal(0);
+      subxMap.set('key1', subscription)
+        .set('key2', subscription2);
+      expect(subxMap.length).to.equal(2);
+    });
   });
 
   describe('#get()', () => {

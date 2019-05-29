@@ -30,6 +30,8 @@ export class SubxMap {
     }
 
     this.subscriptionMap.set(key, subscription);
+
+    return this;
   }
 
   /**

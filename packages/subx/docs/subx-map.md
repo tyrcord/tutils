@@ -44,7 +44,11 @@ Will unsubscribe a Subscription when updating a existing key.
 | key	  | string	  | The key of the Subscription
 | subscription	  | RxJS.SubscriptionLike	  | The subscription to add to the list
 
-#### Example
+#### Returns
+
+The SubxMap object.
+
+#### Examples
 
 ```ts
 const subscription = observable.subscribe(...);
@@ -55,6 +59,14 @@ subxMap.set('key', subscription);
 
 // Updating an element in the list will automatically unsubscribe the previous subscription
 subxMap.set('key', subscription2);
+```
+
+Since the `set()` method returns back the same SubxMap object, you can chain the method call like below:
+
+```ts
+// Add a new subscription to the list
+subxMap.set('key', subscription)
+    .set('key2', subscription2);
 ```
 
 ### get
