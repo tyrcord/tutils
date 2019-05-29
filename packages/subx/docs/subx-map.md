@@ -7,7 +7,7 @@ Object that holds and manages Key-Subscription pairs.
 - [Accessors](#accessors)
     - [length](#length)
 - [Methods](#methods)
-    - [add](#add)
+    - [set](#set)
     - [get](#get)
     - [hasSubscription](#hasSubscription)
     - [unsubscribeForKey](#unsubscribeForKey)
@@ -30,11 +30,12 @@ const length = subxMap.length;
 
 ## Methods
 
-### add
+### set
 
 Add a Subscription to the list with a specified key.
+Will unsubscribe a Subscription when updating a existing key.
 
-`subxMap.add(key, subscription)`
+`subxMap.set(key, subscription)`
 
 #### Parameters
 
@@ -46,7 +47,14 @@ Add a Subscription to the list with a specified key.
 #### Example
 
 ```ts
-subxMap.add('key', observable.subscribe(...));
+const subscription = observable.subscribe(...);
+const subscription2 = observable.subscribe(...);
+
+// Add a new subscription to the list
+subxMap.set('key', subscription);
+
+// Updating an element in the list will automatically unsubscribe the previous subscription
+subxMap.set('key', subscription2);
 ```
 
 ### get

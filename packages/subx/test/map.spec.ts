@@ -25,36 +25,36 @@ describe('SubxMap', () => {
   describe('#length', () => {
     it('should return the number of tracked subscriptions', () => {
       expect(subxMap.length).to.equal(0);
-      subxMap.add('key1', subscription);
-      subxMap.add('key2', subscription2);
+      subxMap.set('key1', subscription);
+      subxMap.set('key2', subscription2);
       expect(subxMap.length).to.equal(2);
     });
   });
 
-  describe('#add()', () => {
+  describe('#set()', () => {
     it('should add a subscription to the list', () => {
       expect(subxMap.length).to.equal(0);
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.length).to.equal(1);
     });
 
     it('should replace a subscription from the list and unsubscribe it when the key already exist', () => {
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
 
-      subxMap.add('key1', subscription2);
+      subxMap.set('key1', subscription2);
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(true);
       expect(subscription2.closed).to.equal(false);
     });
 
     it('should not unsubscribe a subscription when the same subscription is added with the same key', () => {
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
 
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
     });
@@ -62,7 +62,7 @@ describe('SubxMap', () => {
 
   describe('#get()', () => {
     it('should return a subscription from the list with an index', () => {
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.get('key1')).to.equal(subscription);
       expect(subxMap.get('key2')).to.equal(void 0);
     });
@@ -70,7 +70,7 @@ describe('SubxMap', () => {
 
   describe('#hasSubscription()', () => {
     it('should return true if this list contains the given subscription', () => {
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.hasSubscription(subscription)).to.equal(true);
     });
 
@@ -81,8 +81,8 @@ describe('SubxMap', () => {
 
   describe('#unsubscribeForKey()', () => {
     it('should unsubscribe to a subscription with an index', () => {
-      subxMap.add('key1', subscription);
-      subxMap.add('key2', subscription2);
+      subxMap.set('key1', subscription);
+      subxMap.set('key2', subscription2);
       expect(subxMap.length).to.equal(2);
 
       const unsubscribed = subxMap.unsubscribeForKey('key1');
@@ -92,7 +92,7 @@ describe('SubxMap', () => {
     });
 
     it('should handle wrong keys', () => {
-      subxMap.add('key1', subscription);
+      subxMap.set('key1', subscription);
       expect(subxMap.length).to.equal(1);
 
       const unsubscribed = subxMap.unsubscribeForKey('key2');
@@ -105,8 +105,8 @@ describe('SubxMap', () => {
 
   describe('#unsubscribeAll()', () => {
     it('should unsubscribe to all subscriptions', () => {
-      subxMap.add('key1', subscription);
-      subxMap.add('key2', subscription2);
+      subxMap.set('key1', subscription);
+      subxMap.set('key2', subscription2);
       subxMap.unsubscribeAll();
       expect(subxMap.length).to.equal(0);
       expect(subscription.closed).to.equal(true);
@@ -116,13 +116,13 @@ describe('SubxMap', () => {
 
   describe('#purge()', () => {
     it('should unsubscribe to all closed subscriptions', () => {
-      subxMap.add('key1', subscription);
-      subxMap.add('key2', of(2).subscribe());
-      subxMap.add('key3', subscription2);
-      subxMap.add('key4', of(3).subscribe());
-      subxMap.add('key5', source.subscribe());
-      subxMap.add('key6', source.subscribe());
-      subxMap.add('key7', of(4).subscribe());
+      subxMap.set('key1', subscription);
+      subxMap.set('key2', of(2).subscribe());
+      subxMap.set('key3', subscription2);
+      subxMap.set('key4', of(3).subscribe());
+      subxMap.set('key5', source.subscribe());
+      subxMap.set('key6', source.subscribe());
+      subxMap.set('key7', of(4).subscribe());
 
       subxMap.purge();
       expect(subxMap.length).to.equal(4);

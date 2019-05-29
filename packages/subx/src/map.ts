@@ -15,13 +15,14 @@ export class SubxMap {
   protected subscriptionMap: Map<string, SubscriptionLike> = new Map();
 
   /**
-   * Add a Subscription to the list with a specified key
+   * Add a Subscription to the list with a specified key.
+   * Will unsubscribe a Subscription when updating a existing key.
    * @param key The key of the Subscription
-   * @param subscription The subscription to add to the list
+   * @param subscription The Subscription to add to the list
    * @example
-   *  this.subxMap.add('key', observable.subscribe(...));
+   *  this.subxMap.set('key', observable.subscribe(...));
    */
-  public add(key: string, subscription: SubscriptionLike) {
+  public set(key: string, subscription: SubscriptionLike) {
     const oldSubscription = this.subscriptionMap.get(key);
 
     if (oldSubscription && oldSubscription !== subscription) {
