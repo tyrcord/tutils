@@ -38,18 +38,22 @@ describe('SubxMap', () => {
       expect(subxMap.length).to.equal(1);
     });
 
-    it('should replace a subscription from the list and unsubscribe it when the key already exist', () => {
-      subxMap.set('key1', subscription);
-      expect(subxMap.length).to.equal(1);
-      expect(subscription.closed).to.equal(false);
+    it(`should replace a subscription from the list and unsubscribe it when
+      the key already exist`,
+      () => {
+        subxMap.set('key1', subscription);
+        expect(subxMap.length).to.equal(1);
+        expect(subscription.closed).to.equal(false);
 
-      subxMap.set('key1', subscription2);
-      expect(subxMap.length).to.equal(1);
-      expect(subscription.closed).to.equal(true);
-      expect(subscription2.closed).to.equal(false);
-    });
+        subxMap.set('key1', subscription2);
+        expect(subxMap.length).to.equal(1);
+        expect(subscription.closed).to.equal(true);
+        expect(subscription2.closed).to.equal(false);
+      });
 
-    it('should not unsubscribe a subscription when the same subscription is added with the same key', () => {
+    it(`should not unsubscribe a subscription when the same subscription
+      is added with the same key`,
+      () => {
       subxMap.set('key1', subscription);
       expect(subxMap.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
