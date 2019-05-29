@@ -65,9 +65,9 @@ export class SubxMap {
   /**
    * Unsubscribe to all Subscriptions and remove them from the list
    * @example
-   *  this.subxMap.unsubscribe();
+   *  this.subxMap.unsubscribeAll();
    */
-  public unsubscribe() {
+  public unsubscribeAll() {
     for (const key of this.subscriptionMap.keys()) {
       this.unsubscribeForKey(key);
     }

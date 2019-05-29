@@ -42,9 +42,9 @@ export class SubxList {
    * @returns {boolean} true if a Subscription in the list existed and has been
    * unsubscribed and removed, or false if the Subscription does not exist.
    * @example
-   *  this.subxList.unsubscribeAtIndex(0);
+   *  this.subxList.unsubscribeAt(0);
    */
-  public unsubscribeAtIndex(index: number): boolean {
+  public unsubscribeAt(index: number): boolean {
     const subscription = this.get(index);
 
     if (subscription && typeof subscription.unsubscribe === 'function') {
@@ -60,11 +60,11 @@ export class SubxList {
   /**
    * Unsubscribe to all Subscriptions and remove them from the list
    * @example
-   *  this.subxList.unsubscribe();
+   *  this.subxList.unsubscribeAll();
    */
-  public unsubscribe() {
+  public unsubscribeAll() {
     while (this.subscriptionList.length) {
-      this.unsubscribeAtIndex(0);
+      this.unsubscribeAt(0);
     }
   }
 
@@ -80,7 +80,7 @@ export class SubxList {
       const subscription = this.subscriptionList[index];
 
       if (subscription.closed) {
-        this.unsubscribeAtIndex(index);
+        this.unsubscribeAt(index);
         index--;
         length--;
       }

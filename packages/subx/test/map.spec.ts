@@ -21,7 +21,7 @@ describe('SubxMap', () => {
   });
 
   afterEach(() => {
-    subxMap.unsubscribe();
+    subxMap.unsubscribeAll();
     end.next(true);
     end.complete();
   });
@@ -93,7 +93,7 @@ describe('SubxMap', () => {
       subxMap.add('key1', subscription);
       subxMap.add('key2', subscription2);
       subxMap.add('key3', of(2).subscribe());
-      subxMap.unsubscribe();
+      subxMap.unsubscribeAll();
       expect(subxMap.length).to.equal(0);
       expect(subscription.closed).to.equal(true);
       expect(subscription2.closed).to.equal(true);

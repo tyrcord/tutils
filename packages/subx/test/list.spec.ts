@@ -21,7 +21,7 @@ describe('SubxList', () => {
   });
 
   afterEach(() => {
-    subxList.unsubscribe();
+    subxList.unsubscribeAll();
     end.next(true);
     end.complete();
   });
@@ -53,14 +53,14 @@ describe('SubxList', () => {
     });
   });
 
-  describe('#unsubscribeAtIndex()', () => {
+  describe('#unsubscribeAt()', () => {
     it('should unsubscribe to a subscription with an index', () => {
       subxList.add(subscription, subscription2);
       subxList.add(of(2).subscribe());
 
       expect(subxList.length).to.equal(3);
 
-      const unsubscribed = subxList.unsubscribeAtIndex(1);
+      const unsubscribed = subxList.unsubscribeAt(1);
       expect(subxList.length).to.equal(2);
       expect(subscription2.closed).to.equal(true);
       expect(unsubscribed).to.equal(true);
@@ -68,18 +68,18 @@ describe('SubxList', () => {
 
     it('should handle wrong indexes', () => {
       subxList.add(subscription);
-      const unsubscribed = subxList.unsubscribeAtIndex(1);
+      const unsubscribed = subxList.unsubscribeAt(1);
       expect(subxList.length).to.equal(1);
       expect(subscription.closed).to.equal(false);
       expect(unsubscribed).to.equal(false);
     });
   });
 
-  describe('#unsubscribe()', () => {
+  describe('#unsubscribeAll()', () => {
     it('should unsubscribe to all subscriptions', () => {
       subxList.add(subscription, subscription2);
       subxList.add(of(2).subscribe());
-      subxList.unsubscribe();
+      subxList.unsubscribeAll();
       expect(subxList.length).to.equal(0);
       expect(subscription.closed).to.equal(true);
       expect(subscription2.closed).to.equal(true);
