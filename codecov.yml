@@ -28,4 +28,4 @@ comment:
 flags:
   subx:
     paths:
-      - src/subx/
+      - packages/subx/
