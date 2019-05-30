@@ -10,7 +10,7 @@
   "bugs": "https://github.com/tyrcord/tutils/issues",
   "directories": {
     "lib": "lib",
-    "test": "__tests__"
+    "test": "test"
   },
   "files": [
     "dist/**/*"
