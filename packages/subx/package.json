@@ -26,30 +26,17 @@
     "prepublishOnly": "npm test && npm run lint",
     "test": "NODE_ENV=test mocha",
     "coverage": "nyc npm test",
-    "codecov": "nyc merge .nyc_output ./coverage/coverage.json",
-    "docs": "typedoc --theme minimal --mode file --excludePrivate --excludeProtected --out docs ./src"
+    "codecov": "nyc merge .nyc_output ./coverage/coverage.json"
   },
   "peerDependencies": {
     "rxjs": "^6.5.2"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.0.4",
-    "@types/sinon": "^7.0.12",
-    "chai": "^4.2.0",
-    "esm": "^3.2.25",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "prettier": "^1.17.1",
-    "rxjs": "^6.5.2",
-    "sinon": "^7.3.2",
-    "source-map-support": "^0.5.12",
-    "ts-node": "^8.2.0",
     "tslib": "^1.9.3",
     "tslint": "^5.17.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-sonarts": "^1.9.0",
     "typescript": "^3.5.1"
   }
 }
