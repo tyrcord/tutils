@@ -6,6 +6,8 @@ matrix:
   - node_js: "8"
   - node_js: "10"
   - node_js: "12"
-
-after_success:
-  - npm run codecov
+  
+jobs:
+  include:
+    - stage: coverage
+    - npm run codecov
