@@ -28,6 +28,9 @@
     "coverage": "nyc npm test",
     "codecov": "nyc merge .nyc_output ./coverage/coverage.json"
   },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
   "peerDependencies": {
     "rxjs": "^6.5.2"
   },
@@ -35,7 +38,6 @@
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "prettier": "^1.17.1",
-    "tslib": "^1.9.3",
     "tslint": "^5.17.0",
     "typescript": "^3.5.1"
   }
