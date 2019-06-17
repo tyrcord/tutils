@@ -29,9 +29,7 @@
     "codecov": "nyc merge .nyc_output ./coverage/coverage.json"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
-  },
-  "peerDependencies": {
+    "tslib": "^1.10.0",
     "rxjs": "^6.5.2"
   },
   "devDependencies": {
