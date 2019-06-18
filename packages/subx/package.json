@@ -1,6 +1,6 @@
 {
   "name": "@tutils/subx",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "RxJS subscriptions management",
   "author": "Tyrcord Inc. <dev@tyrcord.com>",
   "license": "ISC",
@@ -29,8 +29,8 @@
     "codecov": "nyc merge .nyc_output ./coverage/coverage.json"
   },
   "dependencies": {
-    "tslib": "^1.10.0",
-    "rxjs": "^6.5.2"
+    "rxjs": "^6.5.2",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "mocha": "^6.1.4",
