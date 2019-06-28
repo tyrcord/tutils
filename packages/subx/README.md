@@ -2,7 +2,7 @@
 
 ![npm bundle size](https://img.shields.io/bundlephobia/min/@tutils/subx.svg)
 
-RxJS Subscriptions management.
+*RxJS Subscriptions management.*
 
 Provide Apis to store and manage RxJS subscriptions and provide methods to unsubscribe them all.
 
@@ -11,17 +11,17 @@ Provide Apis to store and manage RxJS subscriptions and provide methods to unsub
 The project has dependencies that require Node 8.9 or higher, together
 with NPM 5.5.1 or higher.
 
-# Contents
+## Contents
 
 - [Installation](#installation)
 - [Changelog](CHANGELOG.md)
 - [SubxList](#subxlist)
-    - [API Reference](docs/subx-list.md)
+  - [API Reference](docs/subx-list.md)
 - [SubxMap](#subxmap)
-    - [API Reference](docs/subx-map.md)
+  - [API Reference](docs/subx-map.md)
 - [License](#license)
 
-# Installation
+## Installation
 
 **BEFORE YOU INSTALL:** please read the [prerequisites](#prerequisites)
 
@@ -29,11 +29,9 @@ with NPM 5.5.1 or higher.
 npm install @tutils/subx --save
 ```
 
-# SubxList
+## SubxList
 
 Object that holds and manages a list of Subscriptions.
-
-### Usage
 
 ```ts
 import { SubxList } from '@tutils/subx';
@@ -56,11 +54,9 @@ subxList.unsubscribeAll();
 
 [API Reference](docs/subx-list.md)
 
-# SubxMap
+## SubxMap
 
 Object that holds and manages Key-Subscription pairs.
-
-### Usage
 
 ```ts
 import { SubxMap } from '@tutils/subx';
@@ -80,9 +76,11 @@ subxList.set('key2', subscription2);
 
 subxList.unsubscribeAll();
 ```
+
 [API Reference](docs/subx-map.md)
 
-# License
+## License
+
 Copyright (c) Tyrcord, Inc. Licensed under the ISC License.
 
 See [LICENSE](LICENSE) file in the project root for details.
