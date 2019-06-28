@@ -83,4 +83,4 @@ subxList.unsubscribeAll();
 
 Copyright (c) Tyrcord, Inc. Licensed under the ISC License.
 
-See [LICENSE](LICENSE) file in the project root for details.
+See [LICENSE](../../LICENSE) file in the project root for details.
