@@ -21,6 +21,7 @@
     ],
     "mccabe-complexity": true,
     "no-empty-nested-blocks": true,
-    "no-nested-incdec": true
+    "no-nested-incdec": true,
+    "max-union-size": false
   }
 }
