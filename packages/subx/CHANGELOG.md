@@ -1,4 +1,4 @@
-# [0.3.1](https://github.com/tyrcord/tutils/releases/tag/v0.3.2) (2019-06-17)
+# [0.3.2](https://github.com/tyrcord/tutils/releases/tag/v0.3.2) (2019-06-18)
 
 ### Bug Fixes
 * **Package.json:** Add `tslib` to peer dependencies
