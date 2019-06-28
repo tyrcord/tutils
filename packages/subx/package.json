@@ -28,7 +28,7 @@
     "coverage": "nyc npm test",
     "codecov": "nyc merge .nyc_output ./coverage/coverage.json"
   },
-  "dependencies": {
+  "peerDependencies": {
     "rxjs": "^6.5.2",
     "tslib": "^1.10.0"
   },
