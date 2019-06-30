@@ -9,10 +9,7 @@
       "message": "Publish %s"
     },
     "bootstrap": {
-      "ignore": "component-*",
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
+      "ignore": "component-*"
     }
   },
   "packages": [
