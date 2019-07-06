@@ -46,6 +46,7 @@
     "format": "lerna run format",
     "build": "lerna run build",
     "test": "lerna run test",
+    "lint": "lerna run lint",
     "coverage": "lerna run coverage",
     "codecov": "npm run coverage && lerna run codecov && codecov"
   },
