@@ -48,9 +48,13 @@
     "test": "lerna run test",
     "lint": "lerna run lint",
     "coverage": "lerna run coverage",
-    "codecov": "npm run coverage && lerna run codecov && codecov"
+    "codecov": "npm run coverage && lerna run codecov && codecov",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "@tutils/subx": "file:packages/subx"
-  }
+    "@tutils/subx": "file:packages/subx",
+    "snyk": "^1.192.4"
+  },
+  "snyk": true
 }
