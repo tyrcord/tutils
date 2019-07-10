@@ -22,11 +22,12 @@
     "build": "rm -rf ./dist && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
+    "prepare": "npm run snyk-protect; npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "test": "NODE_ENV=test mocha",
     "coverage": "nyc npm test",
-    "codecov": "nyc merge .nyc_output ./coverage/coverage.json"
+    "codecov": "nyc merge .nyc_output ./coverage/coverage.json",
+    "snyk-protect": "snyk protect"
   },
   "peerDependencies": {
     "rxjs": "^6.5.2",
@@ -38,5 +39,9 @@
     "prettier": "^1.17.1",
     "tslint": "^5.17.0",
     "typescript": "^3.5.1"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.192.4"
   }
 }
