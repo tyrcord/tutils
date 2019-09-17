@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
-import { of, Subject, SubscriptionLike } from 'rxjs';
+import { interval, of, Subject, SubscriptionLike } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { SubxList } from '../src/list';
 
@@ -96,6 +97,47 @@ describe('SubxList', () => {
       expect(subxList.length).to.equal(4);
       expect(subscription.closed).to.equal(false);
       expect(subscription2.closed).to.equal(false);
+    });
+  });
+
+  describe('#addPausable()', () => {
+    it('should pause the pausable observables', done => {
+      const sourceInterval = interval(100).pipe(take(3));
+
+      subxList.pause();
+
+      setTimeout(() => {
+        subxList.resume();
+      }, 300);
+
+      subxList.addPausable(sourceInterval, value => {
+        expect(value).to.equal(2);
+        done();
+      });
+
+      expect(subxList.length).to.equal(1);
+    });
+
+    it('should buffer the values for pausable observables when required', done => {
+      const sourceInterval = interval(100).pipe(take(3));
+      subxList.pause();
+
+      setTimeout(() => {
+        subxList.resume();
+      }, 300);
+
+      subxList.addPausable(
+        sourceInterval,
+        value => {
+          subxList.unsubscribeAll();
+
+          expect(value).to.equal(0);
+          done();
+        },
+        true,
+      );
+
+      expect(subxList.length).to.equal(1);
     });
   });
 });

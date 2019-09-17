@@ -1,9 +1,11 @@
-import { SubscriptionLike } from 'rxjs';
+import { Observable, SubscriptionLike } from 'rxjs';
+
+import { SubxBase } from './base';
 
 /**
  * The SubxMap object holds and manages Key-Subscription pairs
  */
-export class SubxMap {
+export class SubxMap extends SubxBase {
   /**
    * Return the number of Subscriptions
    * @type {number}
@@ -35,6 +37,29 @@ export class SubxMap {
   }
 
   /**
+   * Add a "pausable" obversable to the list with a specified key.
+   * @param key The key of the Subscription
+   * @param {RxJS.Observable} source - An Observable
+   * @param {Function} next - The callback of an Observer
+   * @param {boolean} [shouldBufferData=false] - Determine if data should be
+   * buffered or not when the observable is paused
+   * @example
+   *  this.subxMap.setPausable(source, () => {});
+   */
+  public setPausable<V>(
+    key: string,
+    source: Observable<V>,
+    next: (value: V) => void,
+    shouldBufferData = false,
+  ) {
+    const pausableSource = this.makePausableObservable(
+      source,
+      shouldBufferData,
+    );
+    return this.set(key, pausableSource.subscribe(next));
+  }
+
+  /**
    * Return a Subscription from the list with a specified key
    * @param key The key of the Subscription
    * @returns {RxJS.SubscriptionLike|undefined} The Subscription associated with
@@ -42,7 +67,7 @@ export class SubxMap {
    * @example
    *  const subscription = subxMap.get('key');
    */
-  public get(key: string) {
+  public get(key: string): SubscriptionLike | undefined {
     return this.subscriptionMap.get(key);
   }
 
@@ -54,7 +79,7 @@ export class SubxMap {
    * @example
    *  this.subxMap.hasSubscription(subscription);
    */
-  public hasSubscription(subscription: SubscriptionLike) {
+  public hasSubscription(subscription: SubscriptionLike): boolean {
     for (const value of this.subscriptionMap.values()) {
       if (value === subscription) {
         return true;

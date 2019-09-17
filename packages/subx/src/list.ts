@@ -1,9 +1,11 @@
-import { SubscriptionLike } from 'rxjs';
+import { Observable, SubscriptionLike } from 'rxjs';
+
+import { SubxBase } from './base';
 
 /**
  * The SubxList object holds and manages a list of Subscriptions
  */
-export class SubxList {
+export class SubxList extends SubxBase {
   /**
    * Return the number of Subscriptions
    * @type {number}
@@ -25,6 +27,27 @@ export class SubxList {
   }
 
   /**
+   * Add a "pausable" obversable to the list
+   * @param {RxJS.Observable} source - An Observable
+   * @param {Function} next - The callback of an Observer
+   * @param {boolean} [shouldBufferData=false] - Determine if data should be
+   * buffered or not when the observable is paused
+   * @example
+   *  this.subxList.addPausable(source, () => {});
+   */
+  public addPausable<V>(
+    source: Observable<V>,
+    next: (value: V) => void,
+    shouldBufferData = false,
+  ) {
+    const pausableSource = this.makePausableObservable(
+      source,
+      shouldBufferData,
+    );
+    this.add(pausableSource.subscribe(next));
+  }
+
+  /**
    * Return a Subscription from the list with a specified index
    * @param index The index of the Subscription
    * @returns {RxJS.SubscriptionLike|undefined} The Subscription associated with
@@ -32,7 +55,7 @@ export class SubxList {
    * @example
    *  this.subxList.get(0);
    */
-  public get(index: number) {
+  public get(index: number): SubscriptionLike | undefined {
     return this.subscriptionList[index];
   }
 
