@@ -13,27 +13,27 @@
     "node": ">=8.9.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.2",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.0.4",
+    "@types/node": "^12.7.5",
     "@types/sinon": "^7.0.12",
     "chai": "^4.2.0",
     "codecov": "^3.5.0",
     "esm": "^3.2.25",
     "husky": "^3.0.2",
-    "lerna": "^3.14.1",
-    "mocha": "^6.1.4",
+    "lerna": "^3.16.4",
+    "mocha": "^6.2.0",
     "nyc": "^14.1.1",
     "prettier": "^1.17.1",
-    "rxjs": "^6.5.2",
-    "sinon": "^7.3.2",
-    "source-map-support": "^0.5.12",
-    "ts-node": "^8.2.0",
+    "rxjs": "^6.5.3",
+    "sinon": "^7.4.2",
+    "source-map-support": "^0.5.13",
+    "ts-node": "^8.4.1",
     "tslib": "^1.9.3",
-    "tslint": "^5.17.0",
+    "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.5.1"
+    "typescript": "^3.6.3"
   },
   "husky": {
     "hooks": {
