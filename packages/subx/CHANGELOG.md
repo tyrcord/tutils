@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/tyrcord/tutils/releases/tag/v0.4.0) (2019-09-23)
+
+### Features
+
+* **SubxMap:** Add the method `pauseAll`
+* **SubxMap:** Add the method `resumeAll`
+* **SubxList:** Add the method `pauseAll`
+* **SubxList:** Add the method `resumeAll`
+
 # [0.3.2](https://github.com/tyrcord/tutils/releases/tag/v0.3.2) (2019-06-18)
 
 ### Bug Fixes
