@@ -104,10 +104,10 @@ describe('SubxList', () => {
     it('should pause the pausable observables', done => {
       const sourceInterval = interval(100).pipe(take(3));
 
-      subxList.pause();
+      subxList.pauseAll();
 
       setTimeout(() => {
-        subxList.resume();
+        subxList.resumeAll();
       }, 300);
 
       subxList.addPausable(sourceInterval, value => {
@@ -120,10 +120,10 @@ describe('SubxList', () => {
 
     it('should buffer the values for pausable observables when required', done => {
       const sourceInterval = interval(100).pipe(take(3));
-      subxList.pause();
+      subxList.pauseAll();
 
       setTimeout(() => {
-        subxList.resume();
+        subxList.resumeAll();
       }, 300);
 
       subxList.addPausable(

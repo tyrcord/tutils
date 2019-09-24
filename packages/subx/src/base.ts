@@ -25,18 +25,18 @@ export class SubxBase {
   /**
    * Pause all "pausable" subscriptions of the list
    * @example
-   *  this.subxList.resume();
+   *  this.subxList.pauseAll();
    */
-  public pause() {
+  public pauseAll() {
     this.pauser$.next(true);
   }
 
   /**
    * Resume all "pausable" subscriptions of the list
    * @example
-   *  this.subxList.resume();
+   *  this.subxList.resumeAll();
    */
-  public resume() {
+  public resumeAll() {
     this.pauser$.next(false);
   }
 

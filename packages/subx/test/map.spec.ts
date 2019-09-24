@@ -144,10 +144,10 @@ describe('SubxMap', () => {
     it('should pause the pausable observables', done => {
       const sourceInterval = interval(100).pipe(take(3));
 
-      subxMap.pause();
+      subxMap.pauseAll();
 
       setTimeout(() => {
-        subxMap.resume();
+        subxMap.resumeAll();
       }, 300);
 
       subxMap.setPausable('pausable', sourceInterval, value => {
@@ -161,10 +161,10 @@ describe('SubxMap', () => {
     it('should buffer the values for pausable observables when required', done => {
       const sourceInterval = interval(100).pipe(take(3));
 
-      subxMap.pause();
+      subxMap.pauseAll();
 
       setTimeout(() => {
-        subxMap.resume();
+        subxMap.resumeAll();
       }, 300);
 
       subxMap.setPausable(
