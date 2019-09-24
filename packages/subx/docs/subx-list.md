@@ -12,6 +12,9 @@ Object that holds and manages a list of Subscriptions.
     - [unsubscribeAt](#unsubscribeAt)
     - [unsubscribeAll](#unsubscribeAll)
     - [purge](#purge)
+    - [addPausable](#addPausable)
+    - [pauseAll](#pauseAll)
+    - [resumeAll](#resumeAll)
 
 ## Accessors
 
@@ -113,4 +116,50 @@ Unsubscribe to all closed Subscriptions and remove them from the list.
 
 ```ts
 subxList.purge();
+```
+
+### addPausable
+
+Unsubscribe to all closed Subscriptions and remove them from the list.
+
+`subxList.addPausable(source, next, shouldBufferData = false)`
+
+#### Parameters
+
+| Name    | Type      | Description  |
+|---------|-----------|--------------|
+| source  | RxJS.Observable | An Observable |
+| next    | Function | The callback of an Observer |
+| shouldBufferData | boolean | Determine if data should be buffered or not when the observable is paused |
+
+#### Example
+
+```ts
+subxList.addPausable(source, (data) => {
+    // ...
+});
+```
+
+### pauseAll
+
+Pause all "pausable" subscriptions of the list.
+
+`subxList.pauseAll()`
+
+#### Example
+
+```ts
+subxList.pauseAll();
+```
+
+### resumeAll
+
+Resume all "pausable" subscriptions of the list.
+
+`subxList.resumeAll()`
+
+#### Example
+
+```ts
+subxList.resumeAll();
 ```

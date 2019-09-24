@@ -13,6 +13,9 @@ Object that holds and manages Key-Subscription pairs.
     - [unsubscribeForKey](#unsubscribeForKey)
     - [unsubscribe](#unsubscribeAll)
     - [purge](#purge)
+    - [setPausable](#setPausable)
+    - [pauseAll](#pauseAll)
+    - [resumeAll](#resumeAll)
 
 ## Accessors
 
@@ -157,4 +160,51 @@ Unsubscribe to all closed Subscriptions and remove them from the list.
 
 ```ts
 subxMap.purge();
+```
+
+### setPausable
+
+Unsubscribe to all closed Subscriptions and remove them from the list.
+
+`subxMap.setPausable(key, source, next, shouldBufferData = false)`
+
+#### Parameters
+
+| Name    | Type      | Description  |
+|---------|-----------|--------------|
+| key  | String | The key of the Subscription |
+| source  | RxJS.Observable | An Observable |
+| next    | Function | The callback of an Observer |
+| shouldBufferData | boolean | Determine if data should be buffered or not when the observable is paused |
+
+#### Example
+
+```ts
+subxMap.setPausable('key', source, (data) => {
+    // ...
+});
+```
+
+### pauseAll
+
+Pause all "pausable" subscriptions of the list.
+
+`subxMap.pauseAll()`
+
+#### Example
+
+```ts
+subxMap.pauseAll();
+```
+
+### resumeAll
+
+Resume all "pausable" subscriptions of the list.
+
+`subxMap.resumeAll()`
+
+#### Example
+
+```ts
+subxMap.resumeAll();
 ```
