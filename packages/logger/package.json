@@ -1,0 +1,40 @@
+{
+  "name": "@tutils/logger",
+  "version": "0.4.0",
+  "author": "Tyrcord Inc. <dev@tyrcord.com>",
+  "license": "ISC",
+  "main": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "repository": "https://github.com/tyrcord/tutils/tree/master/packages/logger",
+  "bugs": "https://github.com/tyrcord/tutils/issues",
+  "engines": {
+    "node": ">=10.9.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.8",
+    "prettier": "^1.18.2",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  }
+}
