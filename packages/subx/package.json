@@ -33,7 +33,7 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "mocha": "^6.2.0",
+    "mocha": "^6.2.1",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "tslint": "^5.20.0",
