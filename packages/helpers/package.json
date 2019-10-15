@@ -26,10 +26,10 @@
     "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
-    "@types/node": "^12.7.11",
+    "@types/node": "^12.11.0",
     "prettier": "^1.18.2",
     "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.4"
   },
   "gitHead": "2b569e6acc0dac6724a50d3435c7c06da3132d4b"
 }
