@@ -8,8 +8,11 @@
   "types": "./dist/types/index.d.ts",
   "repository": "https://github.com/tyrcord/tutils/tree/master/packages/subx",
   "bugs": "https://github.com/tyrcord/tutils/issues",
+  "engines": {
+    "node": ">=10.9.0",
+    "npm": ">=6.9.0"
+  },
   "directories": {
-    "lib": "lib",
     "test": "test"
   },
   "files": [
@@ -22,8 +25,6 @@
     "build": "rm -rf ./dist && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
     "test": "NODE_ENV=test mocha",
     "coverage": "nyc npm test",
     "codecov": "nyc merge .nyc_output ./coverage/coverage.json"

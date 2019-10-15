@@ -8,10 +8,10 @@
   "repository": "https://github.com/tyrcord/tutils/tree/master/packages/logger",
   "bugs": "https://github.com/tyrcord/tutils/issues",
   "engines": {
-    "node": ">=10.9.0"
+    "node": ">=10.9.0",
+    "npm": ">=6.9.0"
   },
   "directories": {
-    "lib": "lib",
     "test": "test"
   },
   "files": [
@@ -23,9 +23,7 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint"
+    "lint": "tslint -p tsconfig.json"
   },
   "dependencies": {
     "chalk": "^2.4.2",
