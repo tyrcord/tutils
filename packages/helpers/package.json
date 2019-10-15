@@ -1,6 +1,6 @@
 {
   "name": "@tutils/helpers",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "author": "Tyrcord Inc. <dev@tyrcord.com>",
   "license": "ISC",
   "main": "./dist/index.js",
