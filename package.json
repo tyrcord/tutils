@@ -39,8 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run lint && lerna run format && git add .",
-      "pre-push": "lerna run test"
+      "pre-push": "lerna run lint && lerna run test"
     }
   },
   "scripts": {
