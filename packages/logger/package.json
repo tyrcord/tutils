@@ -1,6 +1,6 @@
 {
   "name": "@tutils/logger",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "author": "Tyrcord Inc. <dev@tyrcord.com>",
   "license": "ISC",
   "main": "./dist/index.js",
