@@ -24,7 +24,7 @@ export class SubxMap extends SubxBase {
    * @example
    *  this.subxMap.set('key', observable.subscribe(...));
    */
-  public set(key: string, subscription: SubscriptionLike) {
+  public set(key: string, subscription: SubscriptionLike): SubxMap {
     const oldSubscription = this.subscriptionMap.get(key);
 
     if (oldSubscription && oldSubscription !== subscription) {
@@ -50,8 +50,8 @@ export class SubxMap extends SubxBase {
     key: string,
     source: Observable<V>,
     next: (value: V) => void,
-    shouldBufferData = false,
-  ) {
+    shouldBufferData: boolean = false,
+  ): SubxMap {
     const pausableSource = this.makePausableObservable(
       source,
       shouldBufferData,
@@ -113,7 +113,7 @@ export class SubxMap extends SubxBase {
    * @example
    *  this.subxMap.unsubscribeAll();
    */
-  public unsubscribeAll() {
+  public unsubscribeAll(): void {
     for (const key of this.subscriptionMap.keys()) {
       this.unsubscribeForKey(key);
     }
@@ -124,7 +124,7 @@ export class SubxMap extends SubxBase {
    * @example
    *  this.subxMap.purge();
    */
-  public purge() {
+  public purge(): void {
     for (const [key, subscription] of this.subscriptionMap.entries()) {
       if (subscription.closed) {
         this.unsubscribeForKey(key);

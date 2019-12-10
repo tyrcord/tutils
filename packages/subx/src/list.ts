@@ -22,7 +22,7 @@ export class SubxList extends SubxBase {
    * @example
    *  this.subxList.add(observable.subscribe(...));
    */
-  public add(...subscriptions: SubscriptionLike[]) {
+  public add(...subscriptions: SubscriptionLike[]): void {
     Array.prototype.push.apply(this.subscriptionList, subscriptions);
   }
 
@@ -38,8 +38,8 @@ export class SubxList extends SubxBase {
   public addPausable<V>(
     source: Observable<V>,
     next: (value: V) => void,
-    shouldBufferData = false,
-  ) {
+    shouldBufferData: boolean = false,
+  ): void {
     const pausableSource = this.makePausableObservable(
       source,
       shouldBufferData,
@@ -85,7 +85,7 @@ export class SubxList extends SubxBase {
    * @example
    *  this.subxList.unsubscribeAll();
    */
-  public unsubscribeAll() {
+  public unsubscribeAll(): void {
     while (this.subscriptionList.length) {
       this.unsubscribeAt(0);
     }
@@ -96,7 +96,7 @@ export class SubxList extends SubxBase {
    * @example
    *  this.subxList.purge();
    */
-  public purge() {
+  public purge(): void {
     let length = this.subscriptionList.length;
 
     for (let index = 0; index < length; index++) {

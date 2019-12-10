@@ -27,7 +27,7 @@ export class SubxBase {
    * @example
    *  this.subxList.pauseAll();
    */
-  public pauseAll() {
+  public pauseAll(): void {
     this.pauser$.next(true);
   }
 
@@ -36,7 +36,7 @@ export class SubxBase {
    * @example
    *  this.subxList.resumeAll();
    */
-  public resumeAll() {
+  public resumeAll(): void {
     this.pauser$.next(false);
   }
 
@@ -51,10 +51,10 @@ export class SubxBase {
    */
   protected makePausableObservable<V>(
     source: Observable<V>,
-    shouldBufferData = false,
+    shouldBufferData: boolean = false,
   ): Observable<V> {
-    const off$ = this.pauser$.pipe(filter(paused => !paused));
-    const on$ = this.pauser$.pipe(filter(paused => !!paused));
+    const off$ = this.pauser$.pipe(filter((paused: boolean) => !paused));
+    const on$ = this.pauser$.pipe(filter((paused: boolean) => !!paused));
 
     if (shouldBufferData) {
       return merge(

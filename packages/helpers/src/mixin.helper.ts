@@ -2,9 +2,9 @@ export function applyMixins(
   derivedCtor: any,
   baseCtors: any[],
   override = false,
-) {
-  baseCtors.forEach(baseCtor => {
-    Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+): void {
+  baseCtors.forEach((baseCtor: any) => {
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach((name: string) => {
       if (override || !derivedCtor.prototype.hasOwnProperty(name)) {
         const descriptor = Object.getOwnPropertyDescriptor(
           baseCtor.prototype,

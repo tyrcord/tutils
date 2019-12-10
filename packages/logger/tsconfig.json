@@ -10,10 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "preserveConstEnums": true,
     "importHelpers": true,
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "module": "commonjs",
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -26,13 +23,9 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es2016"
+    "target": "es2016",
+    "esModuleInterop": true
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules"
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["**/*.spec.ts", "node_modules"],
+  "include": ["src/**/*"]
 }
