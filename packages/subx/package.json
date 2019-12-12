@@ -22,6 +22,8 @@
     "access": "public"
   },
   "scripts": {
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
     "build": "rm -rf ./dist && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
