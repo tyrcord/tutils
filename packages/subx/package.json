@@ -1,6 +1,6 @@
 {
   "name": "@tutils/subx",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "RxJS subscriptions management",
   "author": "Tyrcord Inc. <dev@tyrcord.com>",
   "license": "ISC",
