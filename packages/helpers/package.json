@@ -23,7 +23,7 @@
   "scripts": {
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
-    "build": "rm -rf ./dist && tsc",
+    "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
@@ -33,5 +33,5 @@
     "tslint": "^5.20.1",
     "typescript": "^3.7.3"
   },
-  "gitHead": "2b569e6acc0dac6724a50d3435c7c06da3132d4b"
+  "gitHead": "b0d790838208fe1beeb270b47e3a65538fcf24a0"
 }

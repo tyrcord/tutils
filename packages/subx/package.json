@@ -24,7 +24,7 @@
   "scripts": {
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
-    "build": "rm -rf ./dist && tsc",
+    "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test": "NODE_ENV=test mocha",
@@ -41,5 +41,6 @@
     "prettier": "^1.19.1",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3"
-  }
+  },
+  "gitHead": "b0d790838208fe1beeb270b47e3a65538fcf24a0"
 }
