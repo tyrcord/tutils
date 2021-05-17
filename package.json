@@ -27,7 +27,7 @@
     "mocha": "^7.0.0",
     "nyc": "^15.0.0",
     "prettier": "^2.0.1",
-    "rxjs": "^6.5.3",
+    "rxjs": "^7.0.1",
     "sinon": "^9.0.0",
     "source-map-support": "^0.5.16",
     "ts-node": "^9.0.0",
